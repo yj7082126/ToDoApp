@@ -14,6 +14,8 @@
 		A883B6501E4D4E3900D4C8C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A883B64E1E4D4E3900D4C8C9 /* LaunchScreen.storyboard */; };
 		A883B65B1E4D4E3900D4C8C9 /* ToDoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A883B65A1E4D4E3900D4C8C9 /* ToDoAppTests.swift */; };
 		A883B6661E4D4E3900D4C8C9 /* ToDoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A883B6651E4D4E3900D4C8C9 /* ToDoAppUITests.swift */; };
+		A883B67B1E4D538B00D4C8C9 /* ToDoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A883B67A1E4D538B00D4C8C9 /* ToDoListTableViewController.swift */; };
+		A883B67E1E4D586A00D4C8C9 /* AddToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A883B67D1E4D586A00D4C8C9 /* AddToDoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,10 @@
 		A883B6611E4D4E3900D4C8C9 /* ToDoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A883B6651E4D4E3900D4C8C9 /* ToDoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAppUITests.swift; sourceTree = "<group>"; };
 		A883B6671E4D4E3900D4C8C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A883B6731E4D526700D4C8C9 /* ToDoApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ToDoApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		A883B67A1E4D538B00D4C8C9 /* ToDoListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoListTableViewController.swift; sourceTree = "<group>"; };
+		A883B67C1E4D53C500D4C8C9 /* ToDoListTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDoListTableViewController.h; sourceTree = "<group>"; };
+		A883B67D1E4D586A00D4C8C9 /* AddToDoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToDoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,10 @@
 				A883B64C1E4D4E3900D4C8C9 /* Assets.xcassets */,
 				A883B64E1E4D4E3900D4C8C9 /* LaunchScreen.storyboard */,
 				A883B6511E4D4E3900D4C8C9 /* Info.plist */,
+				A883B6731E4D526700D4C8C9 /* ToDoApp-Bridging-Header.h */,
+				A883B67A1E4D538B00D4C8C9 /* ToDoListTableViewController.swift */,
+				A883B67C1E4D53C500D4C8C9 /* ToDoListTableViewController.h */,
+				A883B67D1E4D586A00D4C8C9 /* AddToDoViewController.swift */,
 			);
 			path = ToDoApp;
 			sourceTree = "<group>";
@@ -193,6 +203,7 @@
 				TargetAttributes = {
 					A883B6411E4D4E3900D4C8C9 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					A883B6551E4D4E3900D4C8C9 = {
@@ -259,8 +270,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A883B67E1E4D586A00D4C8C9 /* AddToDoViewController.swift in Sources */,
 				A883B6481E4D4E3900D4C8C9 /* ViewController.swift in Sources */,
 				A883B6461E4D4E3900D4C8C9 /* AppDelegate.swift in Sources */,
+				A883B67B1E4D538B00D4C8C9 /* ToDoListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,10 +425,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = ToDoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cs.virginia.edu.ToDoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ToDoApp/ToDoApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -424,10 +440,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = ToDoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cs.virginia.edu.ToDoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ToDoApp/ToDoApp-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
