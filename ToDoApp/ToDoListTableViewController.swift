@@ -9,9 +9,21 @@
 import UIKit
  @objc(ToDoListTableViewController)class ToDoListTableViewController:UITableViewController {
 
+    var toDoItems: NSMutableArray = []
+    func loadInitialData() {
+        var item1 = ToDoItem(name: "Buy milk")
+        self.toDoItems.add(item1)
+        
+        var item2 = ToDoItem(name: "Buy eggs")
+        self.toDoItems.add(item2)
+        
+        var item3 = ToDoItem(name: "Read a book")
+        self.toDoItems.add(item3)
+    } 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loadInitialData()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -28,15 +40,51 @@ import UIKit
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.toDoItems.count
     }
     
-    @IBAction func unwind(seque: UIStoryboardSegue) {};
+    // Override to show what each cell should have in it based on the note in the list
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let CellIndentifier: NSString = "ListPrototypeCell"
+        
+        var cell : UITableViewCell
+            
+            = tableView.dequeueReusableCell(withIdentifier: CellIndentifier as String)! as UITableViewCell
+        
+        var todoitem: ToDoItem = self.toDoItems.object(at: indexPath.row) as! ToDoItem
+        cell.textLabel?.text = todoitem.itemName as String;
+        if todoitem.completed{
+            cell.accessoryType = .checkmark
+        } 
+        else {
+            cell.accessoryType = .none
+        } 
+        return cell
+    }
+    
+    // Override to support tapping on an element in the table view.
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        var tappedItem: ToDoItem = self.toDoItems.object(at: indexPath.row) as! ToDoItem
+        tappedItem.completed = !tappedItem.completed
+        tableView.reloadData()
+        
+    }
+    
+    @IBAction func unwind(seque: UIStoryboardSegue) {
+        var source: AddToDoViewController = seque.source as! AddToDoViewController
+        if var item: ToDoItem = source.toDoItem{
+            self.toDoItems.add(item)
+            self.tableView.reloadData()
+        }
+    }
+    
     
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

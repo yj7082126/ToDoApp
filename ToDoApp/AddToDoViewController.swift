@@ -9,7 +9,26 @@
 import UIKit
 
 class AddToDoViewController: UIViewController {
-
+    
+    var toDoItem: ToDoItem?
+    
+    @IBOutlet var doneButton: UIBarButtonItem!
+    
+    @IBOutlet var textField: UITextField!
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+        if sender as? NSObject != self.doneButton{
+            return
+        }
+        if (self.textField.text?.utf16.count)! > 0{
+            self.toDoItem = ToDoItem(name: NSString(string: self.textField.text!))
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
